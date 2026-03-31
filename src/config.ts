@@ -3,7 +3,7 @@
 
 export const config = {
   // CAMBIAR: tu número de WhatsApp en formato internacional (sin + ni espacios)
-  whatsapp: '573000000000',
+  whatsapp: '573223772019',
 
   // CAMBIAR: tu email de contacto
   email: 'fulcro.dev@gmail.com',
@@ -12,7 +12,7 @@ export const config = {
   instagram: 'fulcrotech',
 
   // Datos de la empresa
-  city: 'Bogotá, Colombia',
+  city: 'Zipaquirá, Colombia',
   year: new Date().getFullYear(),
 } as const;
 
