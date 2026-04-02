@@ -38,7 +38,7 @@ export default function Nav() {
               href="#contacto"
               onClick={closeMenu}
               className="btn btn-primary"
-              style={{ padding: '8px 18px', fontSize: '14px' }}
+              style={{ padding: '8px 18px', fontSize: '14px', color: 'white' }}
             >
               Hablar con nosotros
             </a>
