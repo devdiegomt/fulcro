@@ -1,0 +1,8 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fulcro">
+  <!-- Left arm -->
+  <polygon points="4,4 46,4 50,88" fill="#1D9E75"/>
+  <!-- Right arm -->
+  <polygon points="54,4 96,4 50,88" fill="#27C492"/>
+  <!-- Fulcrum base -->
+  <rect x="36" y="92" width="28" height="5" rx="2.5" fill="#1D9E75"/>
+</svg>

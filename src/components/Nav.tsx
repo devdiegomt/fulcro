@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 
 const LogoMark = () => (
   <div className="nav-logo-mark">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-      <path d="M8 2L14 13H2L8 2Z" stroke="white" strokeWidth="1.5" strokeLinejoin="round"/>
-      <circle cx="8" cy="13" r="1.5" fill="white"/>
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fulcro">
+      <polygon points="4,4 46,4 50,88" fill="#1D9E75" />
+      <polygon points="54,4 96,4 50,88" fill="#27C492" />
+      <rect x="36" y="92" width="28" height="5" rx="2.5" fill="#1D9E75" />
     </svg>
   </div>
 );

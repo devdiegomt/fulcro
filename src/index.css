@@ -154,10 +154,8 @@ ul { list-style: none; }
   gap: 8px;
 }
 .nav-logo-mark {
-  width: 28px;
-  height: 28px;
-  background: var(--accent);
-  border-radius: 6px;
+  width: 16px;
+  height: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
