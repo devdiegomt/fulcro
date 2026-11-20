@@ -1,0 +1,77 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { sitio, contacto } from '../config';
+
+interface Props {
+  titulo: string;
+  descripcion?: string;
+  /** Imagen para compartir en redes, relativa al sitio. */
+  imagen?: string;
+  /** JSON-LD propio de la página. */
+  datos?: Record<string, unknown>;
+}
+
+const { titulo, descripcion = sitio.descripcion, imagen = '/og/fulcro.png', datos } = Astro.props;
+const canonica = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', Astro.site);
+const tituloCompleto = titulo === sitio.nombre ? `${sitio.nombre} — ${sitio.lema}` : `${titulo} · ${sitio.nombre}`;
+const urlImagen = new URL(imagen, Astro.site).href;
+
+const organizacion = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: sitio.nombre,
+  url: Astro.site?.href,
+  logo: new URL('/favicon.svg', Astro.site).href,
+  email: contacto.email,
+  areaServed: 'CO',
+  sameAs: [`https://instagram.com/${contacto.instagram}`],
+};
+---
+<!doctype html>
+<html lang="es-CO">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{tituloCompleto}</title>
+    <meta name="description" content={descripcion} />
+    <link rel="canonical" href={canonica} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#f3f1ec" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:site_name" content={sitio.nombre} />
+    <meta property="og:title" content={tituloCompleto} />
+    <meta property="og:description" content={descripcion} />
+    <meta property="og:url" content={canonica} />
+    <meta property="og:image" content={urlImagen} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json" set:html={JSON.stringify(datos ?? organizacion)} />
+    <script is:inline>document.documentElement.classList.add('js');</script>
+  </head>
+  <body>
+    <a class="saltar" href="#contenido">Saltar al contenido</a>
+    <Nav />
+    <main id="contenido">
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      // Las secciones aparecen al entrar en pantalla. Sin JS o con «reducir
+      // movimiento» todo se ve desde el principio (ver .js .revelar en el CSS).
+      const io = new IntersectionObserver(
+        (entradas) => {
+          for (const e of entradas) {
+            if (e.isIntersecting) {
+              e.target.classList.add('visto');
+              io.unobserve(e.target);
+            }
+          }
+        },
+        { rootMargin: '0px 0px -8% 0px' },
+      );
+      document.querySelectorAll('.revelar').forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>

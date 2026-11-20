@@ -1,0 +1,7 @@
+---
+/** «Nombre, persona natural, NIT …, domicilio …», resaltando lo que falta. */
+import { titular } from '../config';
+const falta = (v: string) => v.startsWith('COMPLETAR');
+---
+<span class:list={{ pendiente: falta(titular.nombre) }}>{titular.nombre}</span>, {titular.tipo}, identificado con NIT
+<span class:list={{ pendiente: falta(titular.documento) }}>{titular.documento}</span>, con domicilio en {titular.ciudad}

@@ -1,0 +1,443 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import tablero from '../assets/qlarity-tablero.png';
+import tableroMovil from '../assets/qlarity-tablero-movil.png';
+import reservar from '../assets/qlarity-reservar.png';
+import { qlarity, qlarityProbar, waLink, pesos } from '../config';
+
+const probar = qlarityProbar();
+const probarFuera = !qlarity.app;
+
+const problemas = [
+  ['La libreta y el WhatsApp', 'Los turnos viven en un cuaderno y en veinte chats. Nadie sabe quién sigue.'],
+  ['Cupos que se pierden', 'Un cliente llama, nadie contesta, y se va al lavadero de la esquina.'],
+  ['El cliente que no vuelve', 'Vino una vez, quedó contento y nunca más supiste de él.'],
+];
+
+const funciones = [
+  { t: 'Tablero del día', d: 'Quién espera, qué se está lavando y qué está listo para entregar. Con el tiempo de cada carro y su bahía.' },
+  { t: 'Reservas por internet', d: 'Tu propio enlace para Instagram y WhatsApp. El cliente elige servicio, día y hora; solo ve los cupos libres.' },
+  { t: 'Contra los que no llegan', d: '«¿No vino?» libera la bahía. Con dos faltas, ese número no puede volver a reservar por la web.' },
+  { t: 'Fotos de recepción', d: 'Fotos del carro al recibirlo. Si hay un reclamo, ahí está la prueba de cómo llegó.' },
+  { t: 'Clientes que vuelven', d: 'Tarjeta de sellos, tiquetera prepagada y una lista de quién no ha vuelto, para invitarlo con un mensaje.' },
+  { t: 'Encuestas y reseñas', d: 'Al entregar, el cliente califica el servicio. Los contentos van directo a dejarte una reseña en Google.' },
+  { t: 'Caja y reportes', d: 'Pagos en efectivo, Nequi, Daviplata o tarjeta. Ingresos del día, de la semana y por servicio.' },
+  { t: 'Hecho para el celular', d: 'El operario lo usa desde su teléfono; tú lo revisas desde donde estés.' },
+];
+
+const preguntas = [
+  ['¿Tengo que instalar algo?', 'No. Funciona en el navegador del celular o del computador. Se puede agregar a la pantalla de inicio como una app.'],
+  ['¿Necesito tarjeta para la prueba?', `No. Son ${qlarity.diasPrueba} días con todo lo de Estudio Pro, sin tarjeta. Al terminar eliges un plan; si no, tu cuenta queda en solo lectura y no pierdes nada.`],
+  ['¿Cómo pago?', 'Mensualmente, con tarjeta o PSE a través de ePayco. Cancelas cuando quieras: no hay permanencia.'],
+  ['¿Qué pasa con mis datos si me voy?', 'Son tuyos. Puedes exportarlos antes de cancelar. Los datos de tus clientes se tratan según la Ley 1581 de protección de datos.'],
+  ['¿Sirve si tengo varias sedes?', 'Hoy cada sede es una cuenta. Si tienes varias, escríbeme y lo miramos.'],
+];
+---
+<Base
+  titulo="Qlarity — software para lavaderos"
+  imagen="/og/qlarity.png"
+  descripcion={`Qlarity es el sistema para lavaderos y estudios de detailing: tablero del día, reservas por internet, caja y fidelización. ${qlarity.diasPrueba} días gratis, sin tarjeta.`}
+  datos={{
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Qlarity',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    offers: qlarity.planes.map((p) => ({ '@type': 'Offer', name: p.nombre, price: p.precio, priceCurrency: 'COP' })),
+  }}
+>
+  <div class="ql">
+    <section class="ql-heroe">
+      <div class="caja">
+        <p class="ql-rotulo">Qlarity · de Fulcro</p>
+        <h1>Tu lavadero, en orden.<br /><span>Desde el celular.</span></h1>
+        <p class="ql-bajada">
+          Para lavaderos y estudios de detailing. El tablero del día, las reservas por internet, la caja y los clientes
+          que vuelven, en un solo lugar.
+        </p>
+        <div class="botones">
+          <a class="ql-boton" href={probar} target={probarFuera ? '_blank' : undefined} rel={probarFuera ? 'noopener' : undefined}>
+            Probar {qlarity.diasPrueba} días gratis
+          </a>
+          <a class="ql-boton-borde" href="#planes">Ver precios</a>
+        </div>
+        <p class="ql-pequeno">Sin tarjeta de crédito · sin permanencia</p>
+        <div class="ql-captura">
+          <Image src={tablero} alt="Tablero de Qlarity: carros esperando, lavando y listos, con operario, bahía y tiempo" widths={[800, 1440, 2000]} sizes="(min-width: 1200px) 1100px, 94vw" loading="eager" />
+        </div>
+      </div>
+    </section>
+
+    <section class="ql-seccion">
+      <div class="caja">
+        <p class="ql-rotulo">El problema</p>
+        <h2>Si te suena alguno, Qlarity es para ti.</h2>
+        <div class="rejilla rejilla-3 ql-problemas">
+          {problemas.map(([t, d]) => (
+            <div class="ql-tarjeta revelar"><h3>{t}</h3><p>{d}</p></div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="ql-seccion">
+      <div class="caja">
+        <p class="ql-rotulo">Qué hace</p>
+        <h2>Todo lo del día a día, sin papeles.</h2>
+        <div class="ql-funciones">
+          {funciones.map((f) => (
+            <div class="revelar"><h3>{f.t}</h3><p>{f.d}</p></div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="ql-seccion">
+      <div class="caja ql-dos">
+        <div class="revelar">
+          <p class="ql-rotulo">Reservas por internet</p>
+          <h2>Tus clientes reservan solos, a cualquier hora.</h2>
+          <p class="ql-bajada">
+            Pones tu enlace en Instagram, en el estado de WhatsApp o en Google. El cliente elige el servicio, el día y
+            la hora, y el turno aparece en tu tablero. Si una hora ya está llena, no la ofrece.
+          </p>
+        </div>
+        <div class="ql-celulares revelar">
+          <Image src={reservar} alt="Página de reservas de un lavadero en el celular" widths={[400, 780]} sizes="(min-width: 900px) 300px, 45vw" />
+          <Image src={tableroMovil} alt="Tablero de Qlarity en el celular" widths={[400, 780]} sizes="(min-width: 900px) 300px, 45vw" />
+        </div>
+      </div>
+    </section>
+
+    <section class="ql-seccion" id="planes">
+      <div class="caja">
+        <p class="ql-rotulo">Precios</p>
+        <h2>Dos planes. Sin permanencia.</h2>
+        <p class="ql-bajada">Empiezas con {qlarity.diasPrueba} días de Estudio Pro, gratis y sin tarjeta. Precios mensuales en pesos colombianos.</p>
+        <div class="rejilla rejilla-2 ql-planes">
+          {qlarity.planes.map((p) => (
+            <div class:list={['ql-plan', { 'ql-plan-destacado': p.destacado }]}>
+              {p.destacado && <span class="ql-sello">El más completo</span>}
+              <h3>{p.nombre}</h3>
+              <p class="ql-para">{p.para}</p>
+              <p class="ql-precio">{pesos(p.precio)}<small> / mes</small></p>
+              <ul>{p.incluye.map((i) => <li>{i}</li>)}</ul>
+              <a class={p.destacado ? 'ql-boton' : 'ql-boton-borde'} href={probar} target={probarFuera ? '_blank' : undefined} rel={probarFuera ? 'noopener' : undefined}>
+                Empezar la prueba
+              </a>
+            </div>
+          ))}
+        </div>
+        <p class="ql-fundador">Precio fundador: {qlarity.descuentoFundador}.</p>
+      </div>
+    </section>
+
+    <section class="ql-seccion">
+      <div class="caja ql-faq">
+        <div>
+          <p class="ql-rotulo">Preguntas</p>
+          <h2>Lo que suelen preguntar.</h2>
+          <p class="ql-bajada">
+            ¿Otra duda? <a href={waLink('Hola, tengo una pregunta sobre Qlarity')} target="_blank" rel="noopener">Escríbeme por WhatsApp</a>.
+          </p>
+        </div>
+        <div>
+          {preguntas.map(([p, r]) => (
+            <details>
+              <summary>{p}</summary>
+              <p>{r}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  /* Qlarity conserva su identidad: oscuro con latón y Archivo. */
+  .ql {
+    --q-fondo: #17181a;
+    --q-carta: #202226;
+    --q-linea: rgb(255 255 255 / 0.1);
+    --q-texto: #ebe7dd;
+    --q-suave: #a7a397;
+    --q-laton: #c8a766;
+    --q-laton-claro: #dbc394;
+    background: var(--q-fondo);
+    color: var(--q-texto);
+    font-family: 'Archivo Variable', var(--f-texto);
+  }
+  .ql h1,
+  .ql h2,
+  .ql h3 {
+    font-family: 'Archivo Variable', var(--f-titulo);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+  .ql-rotulo {
+    font: 600 13px/1 var(--f-mono);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--q-laton);
+  }
+  .ql-heroe {
+    padding-top: clamp(56px, 8vw, 96px);
+    text-align: center;
+    overflow: hidden;
+  }
+  .ql-heroe h1 {
+    font-size: clamp(44px, 7.6vw, 92px);
+    line-height: 1;
+    margin-top: 20px;
+  }
+  .ql-heroe h1 span {
+    color: var(--q-laton);
+  }
+  .ql-heroe .ql-bajada {
+    margin-inline: auto;
+  }
+  .ql-heroe .botones {
+    justify-content: center;
+    margin-top: 32px;
+  }
+  .ql-bajada {
+    margin-top: 18px;
+    max-width: 56ch;
+    color: var(--q-suave);
+    font-size: clamp(17px, 1.6vw, 20px);
+  }
+  .ql-bajada a {
+    color: var(--q-laton-claro);
+  }
+  .ql-pequeno {
+    margin-top: 14px;
+    font-size: 14px;
+    color: var(--q-suave);
+  }
+  .ql-boton,
+  .ql-boton-borde {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 650;
+    text-decoration: none;
+    border: 1.5px solid var(--q-laton);
+    transition: background 0.18s, color 0.18s;
+  }
+  .ql-boton {
+    background: var(--q-laton);
+    color: #17181a;
+  }
+  .ql-boton:hover {
+    background: var(--q-laton-claro);
+  }
+  .ql-boton-borde {
+    color: var(--q-laton-claro);
+  }
+  .ql-boton-borde:hover {
+    background: rgb(200 167 102 / 0.12);
+  }
+  .ql-captura {
+    margin: clamp(40px, 6vw, 72px) auto 0;
+    max-width: 1100px;
+    border-radius: 14px 14px 0 0;
+    overflow: hidden;
+    border: 1px solid var(--q-linea);
+    border-bottom: 0;
+    box-shadow: 0 -20px 80px rgb(200 167 102 / 0.12);
+  }
+  .ql-seccion {
+    padding-block: clamp(64px, 9vw, 120px);
+    border-top: 1px solid var(--q-linea);
+  }
+  .ql-seccion h2 {
+    font-size: clamp(34px, 4.8vw, 56px);
+    margin-top: 16px;
+    max-width: 20ch;
+  }
+  .ql-problemas {
+    margin-top: 40px;
+  }
+  .ql-tarjeta {
+    background: var(--q-carta);
+    border: 1px solid var(--q-linea);
+    border-radius: 14px;
+    padding: 28px;
+  }
+  .ql-tarjeta h3 {
+    font-size: 22px;
+  }
+  .ql-tarjeta p {
+    margin-top: 10px;
+    color: var(--q-suave);
+  }
+  .ql-funciones {
+    margin-top: 44px;
+    display: grid;
+    gap: 36px 32px;
+  }
+  @media (min-width: 700px) {
+    .ql-funciones {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1080px) {
+    .ql-funciones {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .ql-funciones > div {
+    border-top: 2px solid var(--q-laton);
+    padding-top: 18px;
+  }
+  .ql-funciones h3 {
+    font-size: 21px;
+  }
+  .ql-funciones p {
+    margin-top: 10px;
+    color: var(--q-suave);
+  }
+  .ql-dos {
+    display: grid;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .ql-dos {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .ql-celulares {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+  .ql-celulares :global(img) {
+    width: min(46%, 290px);
+    border-radius: 28px;
+    border: 6px solid #2a2c31;
+    box-shadow: 0 30px 60px rgb(0 0 0 / 0.45);
+  }
+  .ql-celulares :global(img:last-child) {
+    margin-top: 48px;
+  }
+  .ql-planes {
+    margin-top: 40px;
+    max-width: 920px;
+  }
+  .ql-plan {
+    display: flex;
+    flex-direction: column;
+    background: var(--q-carta);
+    border: 1px solid var(--q-linea);
+    border-radius: 16px;
+    padding: 32px;
+  }
+  .ql-plan-destacado {
+    border: 2px solid var(--q-laton);
+  }
+  .ql-sello {
+    align-self: flex-start;
+    font: 600 12px/1 var(--f-mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--q-laton);
+    color: #17181a;
+    padding: 7px 10px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+  .ql-plan h3 {
+    font-size: 28px;
+  }
+  .ql-para {
+    margin-top: 6px;
+    color: var(--q-suave);
+  }
+  .ql-precio {
+    margin-top: 22px;
+    font: 700 46px/1 'Archivo Variable', var(--f-titulo);
+    letter-spacing: -0.03em;
+  }
+  .ql-precio small {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--q-suave);
+    letter-spacing: 0;
+  }
+  .ql-plan ul {
+    margin: 22px 0 28px;
+    flex: 1;
+  }
+  .ql-plan li {
+    position: relative;
+    padding-left: 26px;
+    margin-top: 10px;
+  }
+  .ql-plan li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 0.55em;
+    width: 12px;
+    height: 7px;
+    border-left: 2px solid var(--q-laton);
+    border-bottom: 2px solid var(--q-laton);
+    transform: rotate(-45deg);
+  }
+  .ql-fundador {
+    margin-top: 22px;
+    color: var(--q-laton-claro);
+  }
+  .ql-faq {
+    display: grid;
+    gap: 40px;
+  }
+  @media (min-width: 900px) {
+    .ql-faq {
+      grid-template-columns: 1fr 1.3fr;
+    }
+  }
+  details {
+    border-bottom: 1px solid var(--q-linea);
+  }
+  details:first-child {
+    border-top: 1px solid var(--q-linea);
+  }
+  summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 22px 36px 22px 0;
+    font-weight: 650;
+    font-size: 19px;
+    position: relative;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary::after {
+    content: '+';
+    position: absolute;
+    right: 4px;
+    top: 18px;
+    font-size: 26px;
+    color: var(--q-laton);
+    transition: transform 0.2s;
+  }
+  details[open] summary::after {
+    transform: rotate(45deg);
+  }
+  details p {
+    padding-bottom: 22px;
+    color: var(--q-suave);
+    max-width: 60ch;
+  }
+  .ql :focus-visible {
+    outline-color: var(--q-laton);
+  }
+</style>

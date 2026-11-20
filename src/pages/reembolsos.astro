@@ -1,0 +1,51 @@
+---
+import Legal from '../layouts/Legal.astro';
+import Titular from '../components/Titular.astro';
+import { contacto } from '../config';
+---
+<Legal titulo="Cancelaciones y reembolsos" descripcion="Cómo cancelar una suscripción de Fulcro, el derecho de retracto y cuándo procede un reembolso." actualizado="20 de noviembre de 2026">
+  <p>Esta política aplica a los pagos hechos a <Titular />, que opera bajo la marca Fulcro.</p>
+
+  <h2>Cancelar una suscripción</h2>
+  <ul>
+    <li>Puedes cancelar Qlarity cuando quieras desde el panel o escribiendo a <a href={`mailto:${contacto.email}`}>{contacto.email}</a>. No hay permanencia ni multa.</li>
+    <li>La cancelación tiene efecto al final del mes ya pagado. Hasta esa fecha sigues usando el servicio y no se hacen más cobros.</li>
+    <li>Como la prueba gratuita no pide tarjeta, nunca se cobra nada sin que elijas un plan.</li>
+  </ul>
+
+  <h2>Derecho de retracto (5 días hábiles)</h2>
+  <p>
+    Si contrataste por internet, puedes retractarte dentro de los 5 días hábiles siguientes al pago (artículo 47 de la
+    Ley 1480 de 2011). Escríbenos a <a href={`mailto:${contacto.email}`}>{contacto.email}</a> con el correo de tu cuenta
+    y la fecha del pago, y te devolvemos el valor completo. No aplica a servicios a la medida que ya empezaron a
+    prestarse con tu acuerdo.
+  </p>
+
+  <h2>Cuándo hay reembolso</h2>
+  <ul>
+    <li><strong>Retracto</strong> dentro del plazo: reembolso total.</li>
+    <li><strong>Cobro duplicado o equivocado</strong>: reembolso total de lo cobrado de más.</li>
+    <li><strong>Falla del servicio atribuible a Fulcro</strong> que te impida usarlo por más de 3 días seguidos: reembolso proporcional a los días sin servicio.</li>
+    <li>Fuera de esos casos, el mes en curso no se reembolsa: la cancelación evita los cobros siguientes.</li>
+  </ul>
+
+  <h2>Cómo y cuándo se devuelve</h2>
+  <p>
+    El reembolso se hace por el mismo medio de pago, a través de ePayco, dentro de los 30 días calendario siguientes a
+    la aprobación. El tiempo en que lo veas reflejado depende de tu banco o emisor de la tarjeta.
+  </p>
+
+  <h2>Reversión del pago</h2>
+  <p>
+    Si pagaste con tarjeta o por un medio electrónico y fuiste víctima de fraude, la operación no fue solicitada, el
+    servicio no se prestó o no corresponde a lo pedido, puedes pedir la reversión del pago según el artículo 51 de la
+    Ley 1480 de 2011: avísanos y avisa al emisor de tu medio de pago dentro de los 5 días hábiles siguientes a que lo
+    notes.
+  </p>
+
+  <h2>Proyectos a la medida</h2>
+  <p>
+    Los anticipos y pagos de proyectos a la medida se rigen por la propuesta firmada. Si un proyecto se cancela, se
+    cobra el trabajo hecho hasta ese momento y se devuelve el saldo del anticipo que no se haya usado.
+  </p>
+</Legal>

@@ -1,0 +1,242 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import portada from '../assets/margen-feature.png';
+import { margen } from '../config';
+
+const funciones = [
+  { t: 'Cada nota con su tipo', d: 'Una idea, una cita textual o una reflexión tuya. Cada una se ve distinta, con Markdown y etiquetas.' },
+  { t: 'La cita del día', d: 'Cada día vuelve uno de tus subrayados. Si quieres, te llega como notificación.' },
+  { t: 'Portada y autor solos', d: 'Escribes el título y Margen completa la portada, el autor y el año.' },
+  { t: 'Compartir como imagen', d: 'Cualquier nota se vuelve una imagen lista para tus historias, con el subrayado amarillo.' },
+  { t: 'Qué leer después', d: 'Recomendaciones según lo que te gustó, sin enviar el contenido de tus notas.' },
+  { t: 'Sesiones de lectura', d: 'Un temporizador de 25 minutos y tus estadísticas de la semana.' },
+];
+---
+<Base
+  titulo="Margen — notas de lectura"
+  descripcion="Margen guarda las ideas, citas y reflexiones de tus libros y te las devuelve cuando ya las habías olvidado. Gratis, sin publicidad y sin conexión."
+  imagen="/og/margen.png"
+  datos={{
+    '@context': 'https://schema.org',
+    '@type': 'MobileApplication',
+    name: 'Margen',
+    operatingSystem: 'Android, Web',
+    applicationCategory: 'LifestyleApplication',
+    offers: { '@type': 'Offer', price: 0, priceCurrency: 'COP' },
+    url: margen.web,
+  }}
+>
+  <div class="mg">
+    <section class="mg-heroe">
+      <div class="caja mg-heroe-rejilla">
+        <div>
+          <p class="mg-rotulo">Margen · de Fulcro</p>
+          <h1>Margen<span class="punto">.</span></h1>
+          <p class="mg-lema"><mark>Lo que lees, donde</mark><br /><mark>no se te olvide.</mark></p>
+          <p class="mg-bajada">
+            Goodreads te dice qué leen otros. Margen recuerda lo que los libros te dejaron: tus ideas, tus citas
+            subrayadas y tus reflexiones, para devolvértelas cuando ya las habías olvidado.
+          </p>
+          <div class="botones">
+            <a class="mg-boton" href={margen.play} target="_blank" rel="noopener">Descargar en Google Play</a>
+            <a class="mg-boton-borde" href={margen.web} target="_blank" rel="noopener">Usarla en el navegador</a>
+          </div>
+          <p class="mg-pequeno">Gratis · sin publicidad · sin cuenta obligatoria</p>
+        </div>
+        <div class="mg-portada">
+          <Image src={portada} alt="Margen: «Lo que lees, donde no se te olvide», con una cita subrayada en amarillo" widths={[600, 1024]} sizes="(min-width: 960px) 520px, 94vw" loading="eager" />
+        </div>
+      </div>
+    </section>
+
+    <section class="mg-seccion">
+      <div class="caja">
+        <p class="mg-rotulo">Qué hace</p>
+        <h2>Tu memoria de lectura, no un catálogo.</h2>
+        <div class="mg-funciones">
+          {funciones.map((f) => (
+            <div class="revelar"><h3>{f.t}</h3><p>{f.d}</p></div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="mg-seccion mg-datos">
+      <div class="caja mg-dos">
+        <div class="revelar">
+          <p class="mg-rotulo">Tus datos, tuyos</p>
+          <h2>Funciona sin internet y sin cuenta.</h2>
+        </div>
+        <div class="revelar">
+          <p class="mg-bajada">
+            Todo vive en tu teléfono primero. Si quieres usarla en varios dispositivos, creas una cuenta con tu correo
+            —sin contraseña— y se sincroniza sola. Puedes exportar todo cuando quieras: un respaldo completo o cada
+            libro en Markdown.
+          </p>
+          <p class="mg-bajada">
+            Sin funciones sociales a propósito: lo que escribes en Margen es tuyo, no de una comunidad.{' '}
+            <a href={margen.privacidad} target="_blank" rel="noopener">Política de privacidad de Margen</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  /* Margen conserva su identidad: papel, Newsreader, subrayado amarillo y punto azul. */
+  .mg {
+    --m-papel: #faf8f2;
+    --m-tinta: #1f2430;
+    --m-suave: #5b6170;
+    --m-linea: #e6e1d2;
+    --m-amarillo: #ffe880;
+    --m-azul: #2f55d4;
+    background: var(--m-papel);
+    color: var(--m-tinta);
+  }
+  .mg h1,
+  .mg h2,
+  .mg h3 {
+    font-family: 'Newsreader Variable', Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .mg-rotulo {
+    font: 700 12.5px/1 var(--f-texto);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--m-suave);
+  }
+  .punto {
+    color: var(--m-azul);
+  }
+  mark {
+    background: var(--m-amarillo);
+    color: inherit;
+    padding: 0.04em 0.18em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+  .mg-heroe {
+    padding-block: clamp(56px, 8vw, 104px);
+  }
+  .mg-heroe-rejilla {
+    display: grid;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (min-width: 960px) {
+    .mg-heroe-rejilla {
+      grid-template-columns: 1fr 1.05fr;
+    }
+  }
+  .mg-heroe h1 {
+    font-size: clamp(64px, 10vw, 120px);
+    margin-top: 16px;
+    line-height: 0.95;
+  }
+  .mg-lema {
+    margin-top: 18px;
+    font: italic 400 clamp(26px, 3.4vw, 38px) / 1.5 'Newsreader Variable', Georgia, serif;
+  }
+  .mg-bajada {
+    margin-top: 22px;
+    max-width: 52ch;
+    color: var(--m-suave);
+    font-size: 18px;
+  }
+  .mg-bajada a {
+    color: var(--m-azul);
+  }
+  .mg-heroe .botones {
+    margin-top: 32px;
+  }
+  .mg-boton,
+  .mg-boton-borde {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1.5px solid var(--m-tinta);
+    transition: background 0.18s, color 0.18s;
+  }
+  .mg-boton {
+    background: var(--m-tinta);
+    color: var(--m-papel);
+  }
+  .mg-boton:hover {
+    background: var(--m-azul);
+    border-color: var(--m-azul);
+  }
+  .mg-boton-borde:hover {
+    background: var(--m-tinta);
+    color: var(--m-papel);
+  }
+  .mg-pequeno {
+    margin-top: 14px;
+    font-size: 14px;
+    color: var(--m-suave);
+  }
+  .mg-portada :global(img) {
+    border-radius: 16px;
+    border: 1px solid var(--m-linea);
+    box-shadow: 0 30px 60px rgb(31 36 48 / 0.1);
+  }
+  .mg-seccion {
+    padding-block: clamp(64px, 9vw, 120px);
+    border-top: 1px solid var(--m-linea);
+  }
+  .mg-seccion h2 {
+    font-size: clamp(36px, 5vw, 60px);
+    margin-top: 16px;
+    max-width: 18ch;
+  }
+  .mg-funciones {
+    margin-top: 44px;
+    display: grid;
+    gap: 36px 32px;
+  }
+  @media (min-width: 700px) {
+    .mg-funciones {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1080px) {
+    .mg-funciones {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .mg-funciones > div {
+    border-left: 3px solid var(--m-amarillo);
+    padding-left: 18px;
+  }
+  .mg-funciones h3 {
+    font-size: 26px;
+  }
+  .mg-funciones p {
+    margin-top: 8px;
+    color: var(--m-suave);
+  }
+  .mg-datos {
+    background: #f3efe3;
+  }
+  .mg-dos {
+    display: grid;
+    gap: 24px;
+  }
+  @media (min-width: 900px) {
+    .mg-dos {
+      grid-template-columns: 1fr 1.2fr;
+      align-items: start;
+    }
+  }
+  .mg :focus-visible {
+    outline-color: var(--m-azul);
+  }
+</style>

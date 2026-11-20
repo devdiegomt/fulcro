@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import { contacto, titular, waLink } from '../config';
+---
+<Base titulo="Contacto" descripcion="Escríbele a Fulcro por WhatsApp, correo o Instagram.">
+  <section class="seccion">
+    <div class="caja">
+      <div class="cabeza">
+        <p class="etiqueta">Contacto</p>
+        <h1 class="titulo-pagina">Escríbeme por donde te quede más fácil.</h1>
+      </div>
+      <div class="rejilla rejilla-3">
+        <a class="tarjeta medio" href={waLink('Hola, vengo de la página de Fulcro')} target="_blank" rel="noopener">
+          <span class="etiqueta">WhatsApp</span>
+          <strong>+{contacto.whatsapp.replace(/^57(\d{3})(\d{3})(\d{4})$/, '57 $1 $2 $3')}</strong>
+          <span>Lo más rápido.</span>
+        </a>
+        <a class="tarjeta medio" href={`mailto:${contacto.email}`}>
+          <span class="etiqueta">Correo</span>
+          <strong>{contacto.email}</strong>
+          <span>Para propuestas, facturas y temas de datos personales.</span>
+        </a>
+        <a class="tarjeta medio" href={`https://instagram.com/${contacto.instagram}`} target="_blank" rel="noopener">
+          <span class="etiqueta">Instagram</span>
+          <strong>@{contacto.instagram}</strong>
+          <span>Novedades de los productos.</span>
+        </a>
+      </div>
+      <div class="titular">
+        <h2>Quién responde</h2>
+        <p>
+          Fulcro es la marca de <strong>{titular.nombre}</strong>, {titular.tipo}, NIT {titular.documento}, con
+          domicilio en {titular.ciudad}.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .titulo-pagina {
+    font-size: clamp(40px, 6.4vw, 76px);
+    margin-top: 18px;
+    max-width: 16ch;
+  }
+  .medio {
+    display: grid;
+    gap: 10px;
+    text-decoration: none;
+    transition: border-color 0.18s, transform 0.18s;
+  }
+  .medio:hover {
+    border-color: var(--tinta);
+    transform: translateY(-2px);
+  }
+  .medio strong {
+    font: 650 22px/1.2 var(--f-titulo);
+    letter-spacing: -0.02em;
+    overflow-wrap: anywhere;
+  }
+  .medio span:last-child {
+    color: var(--gris);
+  }
+  .titular {
+    margin-top: 56px;
+    max-width: 64ch;
+  }
+  .titular h2 {
+    font-size: 24px;
+  }
+  .titular p {
+    margin-top: 10px;
+    color: var(--tinta-2);
+  }
+</style>

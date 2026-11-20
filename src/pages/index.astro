@@ -1,0 +1,455 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Palanca from '../components/Palanca.astro';
+import tablero from '../assets/qlarity-tablero.png';
+import { sitio, qlarity, aprende, waLink, pesos } from '../config';
+
+const desde = pesos(Math.min(...qlarity.planes.map((p) => p.precio)));
+
+const principios = [
+  {
+    t: 'El precio, antes de empezar',
+    d: 'Te digo cuánto cuesta y qué incluye antes de escribir una línea. Si algo cambia, lo hablamos primero.',
+  },
+  {
+    t: 'En pesos y en horas',
+    d: 'Hablamos de lo que vas a ahorrar o vender, no de frameworks. La jerga es problema mío.',
+  },
+  {
+    t: 'Lo que hago, lo uso',
+    d: 'Qlarity y Margen están en producción, con gente usándolos a diario. Lo que te propongo ya lo probé ahí.',
+  },
+  {
+    t: 'Tus datos son tuyos',
+    d: 'Puedes exportar todo cuando quieras. Cumplimos la Ley 1581 de protección de datos.',
+  },
+];
+---
+<Base titulo={sitio.nombre}>
+  <section class="heroe">
+    <div class="caja heroe-rejilla">
+      <div>
+        <p class="etiqueta">Software hecho en Colombia</p>
+        <h1>Un punto de apoyo para tu <span class="subraya">negocio</span>.</h1>
+        <p class="bajada">
+          Hago productos que puedes usar hoy, sistemas a la medida y automatizaciones para que tu negocio deje de
+          depender de la libreta y de responder el WhatsApp a mano. Y enseño a programar, para quien quiera hacerlo
+          por su cuenta.
+        </p>
+        <div class="botones">
+          <a class="boton boton-tinta" href="#productos">Ver los productos</a>
+          <a class="boton boton-borde" href={waLink('Hola, quiero contarte de mi negocio')} target="_blank" rel="noopener">
+            Cuéntame de tu negocio
+          </a>
+        </div>
+      </div>
+      <Palanca />
+    </div>
+  </section>
+
+  <section class="seccion" id="productos">
+    <div class="caja">
+      <div class="cabeza revelar">
+        <p class="etiqueta">Productos</p>
+        <h2 class="titulo-seccion">Listos para usar, sin esperar un desarrollo.</h2>
+      </div>
+
+      <div class="productos">
+        <a href="/qlarity" class="producto producto-qlarity revelar">
+          <div class="producto-texto">
+            <p class="producto-tipo">Para lavaderos y detailing</p>
+            <h3>Qlarity</h3>
+            <p>
+              El tablero del día, las reservas por internet, la caja y los clientes que vuelven. Desde el celular o el
+              computador.
+            </p>
+            <p class="producto-precio">Desde {desde} al mes · {qlarity.diasPrueba} días gratis</p>
+            <span class="enlace-flecha">Conocer Qlarity →</span>
+          </div>
+          <div class="producto-imagen">
+            <Image src={tablero} alt="Tablero de Qlarity con los carros esperando, lavando y listos" widths={[640, 1100]} sizes="(min-width: 900px) 560px, 92vw" />
+          </div>
+        </a>
+
+        <a href="/margen" class="producto producto-margen revelar">
+          <div class="producto-texto">
+            <p class="producto-tipo">Para lectores · Android y web</p>
+            <h3>Margen<span class="punto">.</span></h3>
+            <p>
+              Guarda las ideas, citas y reflexiones de tus libros, y te las devuelve cuando ya las habías olvidado.
+            </p>
+            <p class="producto-precio">Gratis · sin publicidad · funciona sin conexión</p>
+            <span class="enlace-flecha">Conocer Margen →</span>
+          </div>
+          <div class="producto-imagen">
+            <blockquote class="cita-margen">
+              <p class="cita-rotulo">Tu subrayado de hoy</p>
+              <p class="cita-texto"><mark>En una era de fragmentos,</mark> <mark>la contemplación es un arte…</mark></p>
+              <p class="cita-fuente">Inteligencia genial · pág. 71</p>
+            </blockquote>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja dos-col">
+      <div class="cabeza revelar">
+        <p class="etiqueta">A la medida</p>
+        <h2 class="titulo-seccion">¿Lo que necesitas no existe? Lo hacemos.</h2>
+        <p class="bajada">
+          Páginas web, automatizaciones y sistemas completos para negocios de servicios. Con precio cerrado y entregas
+          que puedes probar desde la primera semana.
+        </p>
+        <div class="botones" style="margin-top:28px">
+          <a class="boton boton-tinta" href="/servicios">Ver qué hago y cuánto cuesta</a>
+        </div>
+      </div>
+      <ol class="pasos revelar">
+        <li><span>01</span><div><h3>Tu negocio en internet</h3><p>Una página que se ve bien en el celular, con WhatsApp y Google.</p></div></li>
+        <li><span>02</span><div><h3>Automatizar lo que repites</h3><p>Citas, recordatorios, respuestas y reportes que se hacen solos.</p></div></li>
+        <li><span>03</span><div><h3>Un sistema a tu medida</h3><p>Usuarios, sedes, pagos e integraciones, puesto en producción.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="seccion aprende">
+    <div class="caja dos-col">
+      <div class="cabeza revelar">
+        <p class="etiqueta">Aprende · {aprende.marca}</p>
+        <h2 class="titulo-seccion">Programar, explicado paso a paso.</h2>
+        <p class="bajada">
+          Con <strong>{aprende.marca}</strong> enseño lo que uso para construir estos productos, en lecturas cortas y
+          ejercicios. Para empezar desde cero o para dar el siguiente paso.
+        </p>
+        <div class="botones" style="margin-top:28px">
+          <a class="boton boton-borde" href="/aprende">Empezar a aprender</a>
+        </div>
+      </div>
+      <div class="terminal revelar" aria-hidden="true">
+        <div class="terminal-barra"><span></span><span></span><span></span></div>
+        <pre><code><span class="c">// Lectura 1: tu primera función</span>
+<span class="k">function</span> <span class="f">saludar</span>(nombre) {'{'}
+  <span class="k">return</span> <span class="s">`Hola, ${'{'}nombre{'}'}`</span>;
+{'}'}
+
+<span class="f">saludar</span>(<span class="s">'Zipaquirá'</span>);
+<span class="c">// → "Hola, Zipaquirá"</span></code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja">
+      <div class="cabeza revelar">
+        <p class="etiqueta">Cómo trabajo</p>
+        <h2 class="titulo-seccion">Sin sorpresas.</h2>
+      </div>
+      <ul class="principios">
+        {principios.map((p, i) => (
+          <li class="revelar">
+            <span class="num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{p.t}</h3>
+            <p>{p.d}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="cierre">
+    <div class="caja cierre-fila">
+      <h2>¿Tienes algo en mente?<br /><span>Hablemos 15 minutos.</span></h2>
+      <div class="botones">
+        <a class="boton boton-acento" href={waLink('Hola, quiero hablar 15 minutos sobre mi negocio')} target="_blank" rel="noopener">
+          Escríbeme por WhatsApp
+        </a>
+        <a class="boton cierre-borde" href="/contacto">Otras formas de contacto</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .heroe {
+    padding-block: clamp(48px, 8vw, 104px) clamp(56px, 8vw, 112px);
+  }
+  .heroe-rejilla {
+    display: grid;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (min-width: 960px) {
+    .heroe-rejilla {
+      grid-template-columns: 1.15fr 1fr;
+    }
+  }
+  h1 {
+    font-size: clamp(46px, 8vw, 96px);
+    margin-top: 20px;
+    letter-spacing: -0.04em;
+  }
+  .subraya {
+    background: linear-gradient(transparent 62%, rgb(255 90 54 / 0.45) 62%);
+    padding: 0 0.04em;
+  }
+  .heroe .bajada {
+    margin-block: 26px 34px;
+  }
+
+  /* Productos */
+  .productos {
+    display: grid;
+    gap: 20px;
+  }
+  .producto {
+    display: grid;
+    gap: 28px;
+    text-decoration: none;
+    border-radius: 22px;
+    padding: clamp(26px, 4vw, 48px);
+    overflow: hidden;
+    transition: transform 0.25s;
+  }
+  .producto:hover {
+    transform: translateY(-3px);
+  }
+  @media (min-width: 900px) {
+    .producto {
+      grid-template-columns: 1fr 1.15fr;
+      align-items: center;
+    }
+  }
+  .producto h3 {
+    font-size: clamp(44px, 6vw, 72px);
+    margin-top: 10px;
+  }
+  .producto-texto > p:not(.producto-tipo) {
+    margin-top: 14px;
+    max-width: 40ch;
+    font-size: 18px;
+  }
+  .producto-tipo {
+    font: 500 12.5px/1 var(--f-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+  .producto .producto-precio {
+    font-size: 15px !important;
+    opacity: 0.8;
+    margin-bottom: 22px;
+  }
+  .producto-qlarity {
+    background: #17181a;
+    color: #eae6dc;
+  }
+  .producto-qlarity h3 {
+    font-family: 'Archivo Variable', var(--f-titulo);
+    letter-spacing: -0.02em;
+  }
+  .producto-qlarity .enlace-flecha {
+    color: #d3b170;
+  }
+  .producto-qlarity .producto-imagen {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgb(255 255 255 / 0.1);
+    box-shadow: 0 30px 60px rgb(0 0 0 / 0.4);
+  }
+  .producto-margen {
+    background: #faf8f2;
+    border: 1px solid var(--linea);
+    color: #1f2430;
+  }
+  .producto-margen h3 {
+    font-family: 'Newsreader Variable', Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .punto {
+    color: #2f55d4;
+  }
+  .producto-margen .enlace-flecha {
+    color: #2f55d4;
+  }
+  .cita-margen {
+    margin: 0 auto;
+    max-width: 380px;
+    background: #fff;
+    border: 1px solid #e6e1d2;
+    border-left: 4px solid #ffe066;
+    border-radius: 14px;
+    padding: 28px 28px 24px;
+    box-shadow: 0 18px 40px rgb(31 36 48 / 0.08);
+    transform: rotate(1.5deg);
+  }
+  .cita-rotulo {
+    font: 700 12px/1 var(--f-texto);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6b7280;
+  }
+  .cita-texto {
+    margin-top: 16px;
+    font: italic 400 26px/1.55 'Newsreader Variable', Georgia, serif;
+  }
+  mark {
+    background: #ffe880;
+    color: inherit;
+    padding: 0.05em 0.15em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+  .cita-fuente {
+    margin-top: 14px;
+    color: #6b7280;
+    font-size: 14px;
+  }
+
+  /* A la medida y Aprende */
+  .dos-col {
+    display: grid;
+    gap: 40px;
+  }
+  @media (min-width: 960px) {
+    .dos-col {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+    .dos-col .cabeza {
+      margin-bottom: 0;
+    }
+  }
+  .pasos {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--linea-fuerte);
+  }
+  .pasos li {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 12px;
+    padding-block: 26px;
+    border-bottom: 1px solid var(--linea-fuerte);
+  }
+  .pasos span {
+    font: 500 14px var(--f-mono);
+    color: var(--acento);
+    padding-top: 6px;
+  }
+  .pasos h3 {
+    font-size: 26px;
+  }
+  .pasos p {
+    margin-top: 6px;
+    color: var(--tinta-2);
+  }
+  .aprende {
+    background: var(--papel-2);
+  }
+  .terminal {
+    background: var(--noche);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 12px 12px 0 var(--chispa);
+  }
+  .terminal-barra {
+    display: flex;
+    gap: 7px;
+    padding: 14px 16px;
+    border-bottom: 1px solid rgb(255 255 255 / 0.08);
+  }
+  .terminal-barra span {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #3b3a35;
+  }
+  pre {
+    margin: 0;
+    padding: 24px 24px 28px;
+    overflow-x: auto;
+    font: 400 15px/1.75 var(--f-mono);
+    color: #e9e6df;
+  }
+  .c {
+    color: #8c8980;
+  }
+  .k {
+    color: #ff8a6b;
+  }
+  .f {
+    color: #f3d27a;
+  }
+  .s {
+    color: #9fd8a8;
+  }
+
+  /* Principios */
+  .principios {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--linea-fuerte);
+  }
+  @media (min-width: 760px) {
+    .principios {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1080px) {
+    .principios {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .principios li {
+    padding: 28px 24px 32px 0;
+    border-bottom: 1px solid var(--linea-fuerte);
+  }
+  .principios .num {
+    font: 500 14px var(--f-mono);
+    color: var(--acento);
+  }
+  .principios h3 {
+    font-size: 24px;
+    margin-top: 14px;
+  }
+  .principios p {
+    margin-top: 10px;
+    color: var(--tinta-2);
+  }
+
+  /* Cierre */
+  .cierre {
+    background: var(--noche);
+    color: var(--papel);
+    padding-block: clamp(64px, 9vw, 112px);
+  }
+  .cierre-fila {
+    display: grid;
+    gap: 32px;
+  }
+  @media (min-width: 960px) {
+    .cierre-fila {
+      grid-template-columns: 1.4fr 1fr;
+      align-items: center;
+    }
+  }
+  .cierre h2 {
+    font-size: clamp(38px, 5.5vw, 64px);
+  }
+  .cierre h2 span {
+    color: var(--chispa);
+  }
+  .cierre-borde {
+    border-color: var(--papel);
+    color: var(--papel);
+  }
+  .cierre-borde:hover {
+    background: var(--papel);
+    color: var(--tinta);
+  }
+</style>

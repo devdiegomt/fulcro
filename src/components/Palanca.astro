@@ -1,0 +1,76 @@
+---
+/**
+ * La idea de Fulcro en un dibujo: un punto de apoyo pequeño levanta lo pesado.
+ * La viga se inclina al cargar la página (sin movimiento si el usuario lo
+ * pidió así).
+ */
+---
+<figure class="palanca" aria-hidden="true">
+  <svg viewBox="0 0 520 380" role="presentation">
+    <defs>
+      <pattern id="rayas" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="3" height="8" fill="rgb(20 20 18 / 0.08)" />
+      </pattern>
+    </defs>
+    <rect x="20" y="318" width="480" height="40" fill="url(#rayas)" />
+    <line x1="20" y1="318" x2="500" y2="318" stroke="#141412" stroke-width="2" />
+
+    <g class="viga">
+      <rect x="40" y="196" width="440" height="14" rx="7" fill="#141412" />
+      <g class="carga">
+        <rect x="62" y="150" width="128" height="46" rx="8" fill="#fbfaf7" stroke="#141412" stroke-width="2" />
+        <text x="126" y="179" text-anchor="middle">Turnos</text>
+        <rect x="76" y="104" width="100" height="46" rx="8" fill="#fbfaf7" stroke="#141412" stroke-width="2" />
+        <text x="126" y="133" text-anchor="middle">Clientes</text>
+        <rect x="88" y="58" width="76" height="46" rx="8" fill="#fbfaf7" stroke="#141412" stroke-width="2" />
+        <text x="126" y="87" text-anchor="middle">Caja</text>
+      </g>
+      <g class="peso">
+        <rect x="392" y="160" width="62" height="36" rx="8" fill="#ff5a36" />
+        <text x="423" y="183" text-anchor="middle" fill="#fff">tú</text>
+      </g>
+    </g>
+
+    <polygon points="226,318 294,318 260,212" fill="#141412" />
+    <polygon points="260,212 294,318 274,318" fill="#ff5a36" />
+  </svg>
+  <figcaption>Poco esfuerzo de tu lado, mucho trabajo levantado.</figcaption>
+</figure>
+
+<style>
+  .palanca {
+    margin: 0;
+  }
+  svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+  text {
+    font: 600 17px var(--f-texto);
+    fill: #141412;
+  }
+  .viga {
+    transform-origin: 260px 203px;
+    transform: rotate(9deg);
+  }
+  figcaption {
+    margin-top: 8px;
+    text-align: center;
+    font: 500 13px var(--f-mono);
+    color: var(--gris);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .viga {
+      animation: inclinar 1.6s cubic-bezier(0.34, 1.4, 0.5, 1) 0.3s both;
+    }
+    @keyframes inclinar {
+      from {
+        transform: rotate(-6deg);
+      }
+      to {
+        transform: rotate(9deg);
+      }
+    }
+  }
+</style>

@@ -1,0 +1,75 @@
+---
+import Legal from '../layouts/Legal.astro';
+import Titular from '../components/Titular.astro';
+import { contacto, qlarity, margen } from '../config';
+---
+<Legal titulo="Términos y condiciones" descripcion="Términos y condiciones de uso de Fulcro, Qlarity, Margen y los servicios de desarrollo." actualizado="20 de noviembre de 2026">
+  <h2>1. Quiénes somos</h2>
+  <p>
+    Fulcro es la marca comercial de <Titular />. En estos términos, «Fulcro», «nosotros» o «yo» se refieren a esa
+    persona. Puedes escribir a <a href={`mailto:${contacto.email}`}>{contacto.email}</a> o al WhatsApp que aparece en
+    <a href="/contacto">Contacto</a>.
+  </p>
+
+  <h2>2. Qué cubren</h2>
+  <p>
+    Estos términos aplican al sitio web de Fulcro, al uso de Qlarity (software por suscripción para lavaderos), a
+    Margen (aplicación gratuita de notas de lectura) y a los servicios de desarrollo a la medida. Al registrarte, pagar
+    o usar cualquiera de ellos, aceptas estos términos. Si no estás de acuerdo, no los uses.
+  </p>
+
+  <h2>3. Qlarity</h2>
+  <p><strong>Prueba gratuita.</strong> Al registrarte tienes {qlarity.diasPrueba} días de prueba con todas las funciones, sin tarjeta. Al terminar, si no eliges un plan, la cuenta queda en solo lectura: puedes consultar y exportar tus datos, pero no registrar nuevos movimientos.</p>
+  <p><strong>Planes y precios.</strong> Los planes, lo que incluye cada uno y su precio mensual están publicados en <a href="/qlarity#planes">la página de Qlarity</a>, en pesos colombianos. Si aplica algún impuesto, se informa antes del pago.</p>
+  <p><strong>Pago.</strong> La suscripción se paga por mes anticipado a través de ePayco, con los medios que esa pasarela ofrezca (tarjeta, PSE u otros). Fulcro no recibe ni guarda los datos de tu tarjeta. La suscripción se renueva automáticamente cada mes hasta que la canceles.</p>
+  <p><strong>Cancelación.</strong> No hay permanencia mínima. Puedes cancelar en cualquier momento desde el panel o escribiéndonos. La cancelación tiene efecto al final del periodo ya pagado; hasta entonces sigues usando el servicio. Lo relativo a reembolsos está en <a href="/reembolsos">Cancelaciones y reembolsos</a>.</p>
+  <p><strong>Pago fallido.</strong> Si un cobro no se puede hacer, te avisamos y tienes 5 días para actualizar el medio de pago. Pasado ese plazo, la cuenta queda en solo lectura hasta que se pague.</p>
+  <p><strong>Cambios de precio.</strong> Si cambia el precio de tu plan, te avisamos con al menos 30 días de anticipación. Si no estás de acuerdo, puedes cancelar antes de que el cambio aplique.</p>
+  <p><strong>Tus datos.</strong> La información que registras en Qlarity es tuya y puedes exportarla. Después de cancelar la conservamos 90 días por si quieres volver; luego se elimina, salvo lo que la ley obligue a guardar.</p>
+  <p><strong>Los datos de tus clientes.</strong> Respecto de los datos personales de los clientes de tu lavadero, tú eres el responsable del tratamiento y Fulcro actúa como encargado: los trata solo para prestarte el servicio, según tus instrucciones y la <a href="/privacidad">política de privacidad</a>. Eres responsable de contar con la autorización de tus clientes; Qlarity te ayuda a pedirla y a registrarla.</p>
+  <p><strong>Uso aceptable.</strong> No puedes usar Qlarity para actividades ilegales, para enviar mensajes no autorizados, para intentar acceder a cuentas de otros o para afectar el funcionamiento del servicio. Podemos suspender una cuenta que incumpla esto, avisándote cuando sea posible.</p>
+  <p><strong>Disponibilidad.</strong> Hacemos lo razonable para que Qlarity funcione todo el tiempo y avisamos los mantenimientos programados, pero no podemos garantizar que nunca haya interrupciones, en especial por fallas de terceros (internet, proveedores de nube, pasarela de pagos).</p>
+
+  <h2>4. Margen</h2>
+  <p>
+    Margen es gratuita y no tiene publicidad. Funciona en tu dispositivo sin necesidad de cuenta; si creas una para
+    sincronizar, aplican estos términos y la <a href={margen.privacidad} target="_blank" rel="noopener">política de privacidad de Margen</a>.
+    Las recomendaciones de lectura son sugerencias automáticas y pueden equivocarse.
+  </p>
+
+  <h2>5. Desarrollo a la medida</h2>
+  <p>
+    Cada proyecto se rige por una propuesta escrita que indica el alcance, el precio, la forma de pago y los plazos. Lo
+    que no esté en la propuesta se cotiza aparte antes de hacerse. Salvo que la propuesta diga otra cosa, los derechos
+    patrimoniales sobre lo desarrollado específicamente para ti pasan a ti cuando el proyecto está pagado por completo;
+    Fulcro conserva sus herramientas, componentes y conocimientos previos y puede reutilizarlos.
+  </p>
+
+  <h2>6. Derecho de retracto</h2>
+  <p>
+    Si contrataste a distancia (por internet o por teléfono), tienes derecho a retractarte dentro de los 5 días
+    hábiles siguientes a la contratación, según el artículo 47 de la Ley 1480 de 2011 (Estatuto del Consumidor). Este
+    derecho no aplica a servicios que ya empezaron a prestarse con tu acuerdo, como un proyecto a la medida en curso. El
+    procedimiento está en <a href="/reembolsos">Cancelaciones y reembolsos</a>.
+  </p>
+
+  <h2>7. Responsabilidad</h2>
+  <p>
+    En lo que la ley permita, la responsabilidad de Fulcro por daños relacionados con Qlarity se limita al valor que
+    hayas pagado en los tres meses anteriores al hecho. Nada de esto limita los derechos que te da el Estatuto del
+    Consumidor ni la responsabilidad por dolo o culpa grave.
+  </p>
+
+  <h2>8. Peticiones, quejas y reclamos</h2>
+  <p>
+    Puedes presentar cualquier petición, queja o reclamo a <a href={`mailto:${contacto.email}`}>{contacto.email}</a>.
+    Respondemos dentro de los 15 días hábiles siguientes. Si no quedas conforme, puedes acudir a la Superintendencia de
+    Industria y Comercio.
+  </p>
+
+  <h2>9. Cambios y ley aplicable</h2>
+  <p>
+    Podemos actualizar estos términos; la fecha de arriba indica la última versión y, si el cambio es importante, te
+    avisamos por correo o en el panel. Estos términos se rigen por las leyes de la República de Colombia.
+  </p>
+</Legal>

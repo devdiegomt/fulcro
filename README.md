@@ -1,78 +1,53 @@
-# Fulcro — Landing Page
+# Fulcro
 
-React + TypeScript + Vite. Lista para Vercel.
+El sitio de Fulcro: la marca, sus productos (Qlarity, Margen), el desarrollo a la
+medida, Aprende (ifanidado) y las páginas legales que revisa ePayco.
 
-## Antes de publicar
+Astro, sitio estático. Cada página es su propio HTML: carga rápido, Google la
+indexa y cada producto tiene su URL para compartir.
 
-Edita **`src/config.ts`** — todos los valores que necesitas cambiar están ahí:
+## Lo que se edita
 
-```ts
-export const config = {
-  whatsapp: '573000000000',   // tu número (sin + ni espacios)
-  email: 'fulcro.dev@gmail.com',
-  instagram: 'fulcrotech',
-  city: 'Bogotá, Colombia',
-  year: new Date().getFullYear(),
-}
-```
+**Todo está en `src/config.ts`**: datos del titular (nombre y NIT del RUT),
+contacto, URL del panel de Qlarity, precios de Qlarity y de los servicios,
+enlaces de Margen y de Aprende.
 
-## Desarrollo local
+- Lo que dice `COMPLETAR` se avisa en cada build y aparece resaltado en las
+  páginas legales. Llénalo antes de pedir la revisión de ePayco.
+- **Al comprar el dominio**: cambia `sitio.url` en `src/config.ts` y la línea
+  `Sitemap:` de `public/robots.txt`, conecta el dominio en Vercel (Settings →
+  Domains) y vuelve a desplegar.
+
+## Páginas
+
+| Ruta | Qué es |
+|---|---|
+| `/` | Fulcro: productos, a la medida, Aprende, cómo trabajo |
+| `/qlarity` | Página de venta de Qlarity, con planes y preguntas |
+| `/margen` | Página de Margen, con Google Play y la web |
+| `/servicios` | Desarrollo a la medida, con precios de partida |
+| `/aprende` | ifanidado: lecturas, Instagram, YouTube |
+| `/contacto` | WhatsApp, correo, Instagram y quién responde |
+| `/terminos`, `/privacidad`, `/reembolsos` | Lo legal (Ley 1480 y Ley 1581) |
+
+Cada producto conserva su identidad: Qlarity en oscuro con latón y Archivo;
+Margen en papel con Newsreader y el subrayado amarillo. Para sumar un producto
+nuevo: una página en `src/pages/`, una tarjeta en `index.astro` y un enlace en
+`Nav.astro` y `Footer.astro`.
+
+## Desarrollo
 
 ```bash
 npm install
-npm run dev
+npm run dev      # http://localhost:4321
+npm run build    # revisa tipos y genera dist/
 ```
 
-Abre [http://localhost:5173](http://localhost:5173).
+Vercel detecta Astro solo. Si el proyecto quedó configurado como Vite, también
+funciona: el comando es `npm run build` y la salida, `dist`.
 
-## Deploy en Vercel
+## Imágenes
 
-**Opción 1 — desde GitHub (recomendada)**
-1. Sube el proyecto a un repositorio en GitHub
-2. En [vercel.com](https://vercel.com), haz clic en "Add New Project"
-3. Importa el repositorio
-4. Vercel detecta Vite automáticamente — no necesitas configurar nada
-5. Haz clic en Deploy
-
-**Opción 2 — desde la CLI**
-```bash
-npm install -g vercel
-vercel
-```
-
-**Opción 3 — build manual**
-```bash
-npm run build
-# Sube la carpeta /dist a cualquier hosting estático
-```
-
-## Estructura del proyecto
-
-```
-src/
-├── config.ts              ← valores editables (WhatsApp, email, etc.)
-├── index.css              ← todos los estilos + design tokens
-├── main.tsx               ← entry point
-├── App.tsx                ← composición de secciones
-├── hooks/
-│   └── useScrollReveal.ts ← animaciones de scroll
-└── components/
-    ├── Nav.tsx            ← navegación + menú móvil
-    ├── Hero.tsx           ← hero principal
-    ├── ForWho.tsx         ← industrias objetivo
-    ├── Services.tsx       ← 3 niveles de servicio
-    ├── Process.tsx        ← cómo funciona
-    ├── WhyFulcro.tsx      ← diferenciadores
-    ├── CTA.tsx            ← sección de contacto
-    └── Footer.tsx         ← pie de página
-```
-
-## Dominio personalizado en Vercel
-
-1. Ve a tu proyecto en Vercel → Settings → Domains
-2. Agrega tu dominio (ej. `fulcro.dev`)
-3. Sigue las instrucciones para apuntar los DNS
-
----
-
-*ifanidado · Fulcro · 2025*
+- Capturas de Qlarity (`src/assets/qlarity-*.png`): tomadas del panel con los
+  datos de demostración. Astro las convierte a WebP en varios tamaños.
+- Imágenes para compartir en redes (`public/og/*.png`, 1200×630).
