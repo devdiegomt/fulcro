@@ -11,7 +11,7 @@ export const sitio = {
   nombre: 'Fulcro',
   lema: 'Un punto de apoyo para tu negocio',
   descripcion:
-    'Fulcro hace software en Colombia: productos propios como Qlarity y Margen, desarrollo a la medida, automatizaciones y clases de programación.',
+    'Fulcro hace software en Colombia: productos propios como Qlarity y Margen, videojuegos como Acidito, desarrollo a la medida, automatizaciones y clases de programación.',
 };
 
 /** Quien responde legalmente: la persona natural del RUT. */
@@ -68,6 +68,14 @@ export const margen = {
   web: 'https://margennotas.com',
   play: 'https://play.google.com/store/apps/details?id=com.ifanidado.margen',
   privacidad: 'https://margennotas.com/privacidad.html',
+};
+
+export const acidito = {
+  // Donde se juega. Vacío: los botones de «Jugar» dicen «Pronto» y llevan a
+  // Instagram para enterarse cuando salga.
+  jugar: '',
+  niveles: 51,
+  temporadas: 2,
 };
 
 export const aprende = {
@@ -140,5 +148,6 @@ export function pendientes(): string[] {
   if (titular.nombre.startsWith('COMPLETAR')) faltan.push('titular.nombre');
   if (titular.documento.startsWith('COMPLETAR')) faltan.push('titular.documento');
   if (!qlarity.app) faltan.push('qlarity.app (los botones de Qlarity van a WhatsApp)');
+  if (!acidito.jugar) faltan.push('acidito.jugar (el botón de Acidito dice «Pronto»)');
   return faltan;
 }

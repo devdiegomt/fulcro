@@ -25,13 +25,15 @@ enlaces de Margen y de Aprende.
 | `/` | Fulcro: productos, a la medida, Aprende, cómo trabajo |
 | `/qlarity` | Página de venta de Qlarity, con planes y preguntas |
 | `/margen` | Página de Margen, con Google Play y la web |
+| `/acidito` | El videojuego: personajes, modos, mundos y capturas |
 | `/servicios` | Desarrollo a la medida, con precios de partida |
 | `/aprende` | ifanidado: lecturas, Instagram, YouTube |
 | `/contacto` | WhatsApp, correo, Instagram y quién responde |
 | `/terminos`, `/privacidad`, `/reembolsos` | Lo legal (Ley 1480 y Ley 1581) |
 
 Cada producto conserva su identidad: Qlarity en oscuro con latón y Archivo;
-Margen en papel con Newsreader y el subrayado amarillo. Para sumar un producto
+Margen en papel con Newsreader y el subrayado amarillo; Acidito en el café
+oscuro del juego, con Fredoka y los colores de los tres personajes. Para sumar un producto
 nuevo: una página en `src/pages/`, una tarjeta en `index.astro` y un enlace en
 `Nav.astro` y `Footer.astro`.
 

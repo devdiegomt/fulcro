@@ -3,7 +3,8 @@ import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Palanca from '../components/Palanca.astro';
 import tablero from '../assets/qlarity-tablero.png';
-import { sitio, qlarity, aprende, waLink, pesos } from '../config';
+import aciditoPortada from '../assets/acidito-portada.png';
+import { sitio, qlarity, aprende, acidito, waLink, pesos } from '../config';
 
 const desde = pesos(Math.min(...qlarity.planes.map((p) => p.precio)));
 
@@ -34,8 +35,8 @@ const principios = [
         <h1>Un punto de apoyo para tu <span class="subraya">negocio</span>.</h1>
         <p class="bajada">
           Hago productos que puedes usar hoy, sistemas a la medida y automatizaciones para que tu negocio deje de
-          depender de la libreta y de responder el WhatsApp a mano. Y enseño a programar, para quien quiera hacerlo
-          por su cuenta.
+          depender de la libreta y de responder el WhatsApp a mano. También hago videojuegos, y enseño a programar
+          para quien quiera hacerlo por su cuenta.
         </p>
         <div class="botones">
           <a class="boton boton-tinta" href="#productos">Ver los productos</a>
@@ -53,6 +54,7 @@ const principios = [
       <div class="cabeza revelar">
         <p class="etiqueta">Productos</p>
         <h2 class="titulo-seccion">Listos para usar, sin esperar un desarrollo.</h2>
+        <p class="bajada">Software para negocios, una app para lectores y un videojuego para jugar entre tres.</p>
       </div>
 
       <div class="productos">
@@ -88,6 +90,21 @@ const principios = [
               <p class="cita-texto"><mark>En una era de fragmentos,</mark> <mark>la contemplación es un arte…</mark></p>
               <p class="cita-fuente">Inteligencia genial · pág. 71</p>
             </blockquote>
+          </div>
+        </a>
+
+        <a href="/acidito" class="producto producto-acidito revelar">
+          <div class="producto-texto">
+            <p class="producto-tipo">Videojuego · cooperativo para tres</p>
+            <h3>Acidito</h3>
+            <p>
+              Chispa, Gota y Acidito tienen que llegar juntos a su puerta. Cada uno solo sobrevive a su elemento.
+            </p>
+            <p class="producto-precio">{acidito.niveles} niveles · jefes · online y en el celular</p>
+            <span class="enlace-flecha">Conocer Acidito →</span>
+          </div>
+          <div class="producto-imagen">
+            <Image src={aciditoPortada} alt="Portada de Acidito con Chispa, Gota y Acidito" widths={[640, 1100]} sizes="(min-width: 900px) 560px, 92vw" />
           </div>
         </a>
       </div>
@@ -274,6 +291,31 @@ const principios = [
   }
   .producto-margen .enlace-flecha {
     color: #2f55d4;
+  }
+  .producto-acidito {
+    background:
+      radial-gradient(60% 60% at 0% 0%, rgb(255 122 61 / 0.18), transparent 70%),
+      radial-gradient(50% 60% at 100% 100%, rgb(122 217 74 / 0.14), transparent 70%),
+      #0d0b08;
+    color: #f3e6c8;
+  }
+  .producto-acidito h3 {
+    font-family: 'Fredoka Variable', var(--f-titulo);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    background: linear-gradient(90deg, #ff7a3d, #3fa4ff 50%, #7ad94a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    width: fit-content;
+  }
+  .producto-acidito .enlace-flecha {
+    color: #ffd77a;
+  }
+  .producto-acidito .producto-imagen {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid #3b3022;
   }
   .cita-margen {
     margin: 0 auto;
