@@ -1,0 +1,99 @@
+---
+import Base from '../layouts/Base.astro';
+import { servicios, waLink } from '../config';
+
+const proceso = [
+  ['Hablamos', 'Me cuentas qué haces, qué te quita tiempo y qué quieres lograr. 30 minutos, sin costo.'],
+  ['Propuesta cerrada', 'Te mando qué voy a hacer, cuánto cuesta y en cuánto tiempo. Por escrito, antes de empezar.'],
+  ['Entregas que pruebas', 'Cada semana ves avances funcionando, no promesas. Ajustamos sobre la marcha.'],
+  ['En producción', 'Lo dejo funcionando, te explico cómo usarlo y quedo para el soporte.'],
+];
+---
+<Base
+  titulo="Desarrollo a la medida"
+  descripcion="Páginas web, automatizaciones y sistemas a la medida para negocios de servicios en Colombia. Precio cerrado antes de empezar."
+>
+  <section class="seccion">
+    <div class="caja">
+      <div class="cabeza">
+        <p class="etiqueta">A la medida</p>
+        <h1 class="titulo-pagina">Lo que tu negocio necesita y ningún programa hace.</h1>
+        <p class="bajada">
+          Si ninguno de mis productos te sirve tal cual, lo construimos. Para negocios de servicios que quieren dejar de
+          hacer a mano lo que se puede hacer solo. Precios de partida en pesos; el precio final va en la propuesta.
+        </p>
+      </div>
+      <div class="rejilla rejilla-3">
+        {servicios.map((s) => (
+          <div class:list={['tarjeta plan revelar', { 'plan-destacado': s.destacado }]}>
+            {s.destacado && <span class="sello">El más pedido</span>}
+            <h3>{s.nombre}</h3>
+            <p class="nota">{s.para}</p>
+            <p class="precio">{s.precio}</p>
+            <p class="nota">{s.nota}</p>
+            <ul class="lista-check">{s.incluye.map((i) => <li>{i}</li>)}</ul>
+            <a class:list={['boton', s.destacado ? 'boton-tinta' : 'boton-borde']} href={waLink(`Hola, me interesa: ${s.nombre}`)} target="_blank" rel="noopener">
+              Me interesa
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja">
+      <div class="cabeza revelar">
+        <p class="etiqueta">Cómo es trabajar conmigo</p>
+        <h2 class="titulo-seccion">Cuatro pasos, sin letra pequeña.</h2>
+      </div>
+      <ol class="proceso">
+        {proceso.map(([t, d], i) => (
+          <li class="revelar"><span>{String(i + 1).padStart(2, '0')}</span><h3>{t}</h3><p>{d}</p></li>
+        ))}
+      </ol>
+      <div class="botones" style="margin-top:48px">
+        <a class="boton boton-acento" href={waLink('Hola, quiero agendar los 30 minutos para contarte de mi negocio')} target="_blank" rel="noopener">
+          Agendar los 30 minutos
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .titulo-pagina {
+    font-size: clamp(40px, 6.4vw, 76px);
+    margin-top: 18px;
+    max-width: 18ch;
+  }
+  .proceso {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--linea-fuerte);
+  }
+  @media (min-width: 900px) {
+    .proceso {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .proceso li {
+    padding: 28px 24px 32px 0;
+    border-bottom: 1px solid var(--linea-fuerte);
+  }
+  .proceso span {
+    font: 500 14px var(--f-mono);
+    color: var(--acento);
+  }
+  .proceso h3 {
+    font-size: 24px;
+    margin-top: 14px;
+  }
+  .proceso p {
+    margin-top: 10px;
+    color: var(--tinta-2);
+  }
+</style>

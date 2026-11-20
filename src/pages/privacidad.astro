@@ -1,0 +1,84 @@
+---
+import Legal from '../layouts/Legal.astro';
+import Titular from '../components/Titular.astro';
+import { contacto, margen } from '../config';
+---
+<Legal titulo="Política de tratamiento de datos personales" descripcion="Cómo Fulcro trata los datos personales, según la Ley 1581 de 2012." actualizado="20 de noviembre de 2026">
+  <p>
+    Esta política explica cómo se tratan los datos personales en Fulcro, conforme a la Ley 1581 de 2012 y al Decreto
+    1074 de 2015 (que compila el Decreto 1377 de 2013).
+  </p>
+
+  <h2>Responsable del tratamiento</h2>
+  <p>
+    <Titular />, que opera bajo la marca Fulcro. Correo: <a href={`mailto:${contacto.email}`}>{contacto.email}</a>.
+  </p>
+
+  <h2>Qué datos tratamos y para qué</h2>
+  <ul>
+    <li><strong>Si nos escribes</strong> (WhatsApp, correo, Instagram): tu nombre, teléfono o correo y lo que nos cuentes, para responderte, enviarte propuestas y hacer seguimiento.</li>
+    <li><strong>Si tienes una cuenta de Qlarity</strong>: tus datos de contacto, los del negocio y los de los usuarios que crees, para prestarte el servicio, cobrar la suscripción, darte soporte y avisarte de cambios importantes.</li>
+    <li><strong>Pagos</strong>: los procesa ePayco. Fulcro recibe la confirmación del pago, pero no los datos completos de tu tarjeta ni de tu cuenta bancaria.</li>
+    <li><strong>Este sitio web</strong> no usa cookies de seguimiento ni herramientas de publicidad.</li>
+  </ul>
+
+  <h2>Los datos de los clientes de cada lavadero</h2>
+  <p>
+    Cuando un lavadero usa Qlarity, <strong>el lavadero es el responsable</strong> de los datos de sus clientes (nombre,
+    teléfono, placa, fotos del vehículo al recibirlo) y Fulcro es el <strong>encargado</strong>: los trata solo para
+    prestarle el servicio. Cada lavadero publica su propio aviso de privacidad, que Qlarity muestra en su página de
+    reservas. Para ejercer tus derechos sobre esos datos, puedes dirigirte al lavadero o escribirnos y se lo hacemos
+    llegar.
+  </p>
+
+  <h2>Margen</h2>
+  <p>
+    Margen guarda tus notas en tu dispositivo. Si creas una cuenta para sincronizar, aplica la
+    <a href={margen.privacidad} target="_blank" rel="noopener">política de privacidad de Margen</a>.
+  </p>
+
+  <h2>Acidito</h2>
+  <p>
+    El juego no pide datos personales. El progreso se guarda en tu navegador o en un código que tú copias. En el modo
+    online, los jugadores se conectan directamente entre sus navegadores; un servidor público de PeerJS solo sirve
+    para que se encuentren con el código de la sala.
+  </p>
+
+  <h2>Tus derechos</h2>
+  <p>Como titular de los datos puedes:</p>
+  <ul>
+    <li>Conocer, actualizar y rectificar tus datos.</li>
+    <li>Pedir prueba de la autorización que nos diste.</li>
+    <li>Saber para qué se han usado tus datos.</li>
+    <li>Revocar la autorización o pedir que eliminemos tus datos, cuando no exista un deber legal o contractual de conservarlos.</li>
+    <li>Acceder gratis a tus datos.</li>
+    <li>Presentar quejas ante la Superintendencia de Industria y Comercio, después de haber acudido a nosotros.</li>
+  </ul>
+
+  <h2>Cómo ejercerlos</h2>
+  <p>
+    Escribe a <a href={`mailto:${contacto.email}`}>{contacto.email}</a> con tu nombre, cómo contactarte y lo que
+    pides. Las <strong>consultas</strong> se responden en máximo 10 días hábiles (prorrogables 5 más, avisándote). Los
+    <strong>reclamos</strong> —corregir, actualizar, suprimir o revocar— en máximo 15 días hábiles (prorrogables 8 más,
+    avisándote).
+  </p>
+
+  <h2>Dónde se guardan y con quién se comparten</h2>
+  <p>
+    Usamos proveedores de nube para alojar el sitio y los productos (por ejemplo, Vercel, Render y Supabase), con
+    servidores que pueden estar fuera de Colombia. Ellos actúan como encargados y solo tratan los datos para prestarnos
+    su servicio. No vendemos ni cedemos tus datos a terceros para publicidad.
+  </p>
+
+  <h2>Seguridad</h2>
+  <p>
+    Aplicamos medidas técnicas y administrativas para proteger los datos: conexiones cifradas, contraseñas guardadas
+    con hash, aislamiento entre las cuentas de distintos negocios y copias de respaldo.
+  </p>
+
+  <h2>Vigencia</h2>
+  <p>
+    Esta política rige desde la fecha indicada arriba. Los datos se conservan mientras sean necesarios para las
+    finalidades descritas o mientras la ley lo exija. Si la cambiamos de forma importante, lo avisamos en este sitio.
+  </p>
+</Legal>

@@ -1,0 +1,117 @@
+---
+import Base from '../layouts/Base.astro';
+import { aprende } from '../config';
+
+const canales = [
+  {
+    nombre: 'Lecturas paso a paso',
+    detalle: 'Lecciones cortas para leer a tu ritmo, con ejemplos que puedes copiar y probar.',
+    enlace: aprende.lecturas,
+    accion: 'Empezar a leer',
+  },
+  {
+    nombre: `Instagram · @${aprende.instagram}`,
+    detalle: 'Consejos rápidos, ejercicios y lo que voy aprendiendo mientras construyo.',
+    enlace: `https://instagram.com/${aprende.instagram}`,
+    accion: 'Seguir en Instagram',
+  },
+  {
+    nombre: 'YouTube',
+    detalle: 'Videos donde construimos cosas reales de principio a fin.',
+    enlace: aprende.youtube,
+    accion: 'Ver el canal',
+  },
+];
+---
+<Base
+  titulo="Aprende a programar"
+  descripcion={`${aprende.marca}: aprende a programar paso a paso, con lecturas cortas y ejemplos reales, de la mano de quien construye Qlarity y Margen.`}
+>
+  <section class="seccion">
+    <div class="caja">
+      <div class="cabeza">
+        <p class="etiqueta">Aprende · {aprende.marca}</p>
+        <h1 class="titulo-pagina">Aprende a programar construyendo cosas de verdad.</h1>
+        <p class="bajada">
+          <strong>{aprende.marca}</strong> es donde enseño lo que uso todos los días para hacer Qlarity y Margen. Sin
+          relleno: lecturas cortas, ejemplos que funcionan y el porqué de cada decisión.
+        </p>
+      </div>
+      <div class="rejilla rejilla-3">
+        {canales.map((c) => (
+          <div class="tarjeta canal revelar">
+            <h2>{c.nombre}</h2>
+            <p>{c.detalle}</p>
+            {c.enlace ? (
+              <a class="enlace-flecha" href={c.enlace} target="_blank" rel="noopener">{c.accion} →</a>
+            ) : (
+              <span class="pronto">Pronto</span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja dos">
+      <div class="revelar">
+        <p class="etiqueta">Para quién es</p>
+        <h2 class="titulo-seccion">Para empezar de cero o para dar el siguiente paso.</h2>
+      </div>
+      <ul class="lista-check revelar">
+        <li>Si nunca has programado y quieres saber por dónde empezar.</li>
+        <li>Si ya sabes lo básico y quieres construir tu primer proyecto completo.</li>
+        <li>Si tienes un negocio y quieres entender qué se puede automatizar.</li>
+        <li>Si quieres ver cómo se hace un producto real, desde la idea hasta que la gente lo usa.</li>
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .titulo-pagina {
+    font-size: clamp(40px, 6.4vw, 76px);
+    margin-top: 18px;
+    max-width: 18ch;
+  }
+  .canal {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .canal h2 {
+    font-size: 26px;
+  }
+  .canal p {
+    color: var(--tinta-2);
+    flex: 1;
+  }
+  .canal .enlace-flecha {
+    align-self: flex-start;
+  }
+  .pronto {
+    align-self: flex-start;
+    font: 600 12px/1 var(--f-mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: 1.5px dashed var(--linea-fuerte);
+    padding: 8px 12px;
+    border-radius: 999px;
+    color: var(--gris);
+  }
+  .dos {
+    display: grid;
+    gap: 32px;
+  }
+  @media (min-width: 900px) {
+    .dos {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+  .dos .lista-check li {
+    font-size: 19px;
+    margin-top: 18px;
+  }
+</style>

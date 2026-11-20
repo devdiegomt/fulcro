@@ -1,0 +1,103 @@
+---
+import Logo from './Logo.astro';
+import { contacto, titular, sitio } from '../config';
+const anio = new Date().getFullYear();
+---
+<footer class="pie">
+  <div class="caja">
+    <div class="pie-rejilla">
+      <div class="pie-marca">
+        <a href="/" class="marca" aria-label="Fulcro, inicio"><Logo tam={30} claro /><span>Fulcro</span></a>
+        <p>{sitio.lema}. Software hecho en Colombia.</p>
+      </div>
+      <nav aria-label="Productos">
+        <h2>Productos</h2>
+        <a href="/qlarity">Qlarity</a>
+        <a href="/margen">Margen</a>
+        <a href="/acidito">Acidito</a>
+      </nav>
+      <nav aria-label="Fulcro">
+        <h2>Fulcro</h2>
+        <a href="/servicios">A la medida</a>
+        <a href="/aprende">Aprende</a>
+        <a href="/contacto">Contacto</a>
+      </nav>
+      <nav aria-label="Legal">
+        <h2>Legal</h2>
+        <a href="/terminos">Términos y condiciones</a>
+        <a href="/privacidad">Privacidad y datos</a>
+        <a href="/reembolsos">Cancelaciones y reembolsos</a>
+      </nav>
+    </div>
+    <div class="pie-legal">
+      <p>
+        © {anio} Fulcro · {titular.nombre}, {titular.tipo} · NIT {titular.documento} · {titular.ciudad}
+      </p>
+      <p>
+        <a href={`mailto:${contacto.email}`}>{contacto.email}</a>{' · '}
+        <a href={`https://instagram.com/${contacto.instagram}`} target="_blank" rel="noopener">@{contacto.instagram}</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .pie {
+    background: var(--noche);
+    color: #d8d5cd;
+    padding-block: 64px 32px;
+  }
+  .pie-rejilla {
+    display: grid;
+    gap: 36px;
+  }
+  @media (min-width: 760px) {
+    .pie-rejilla {
+      grid-template-columns: 2fr 1fr 1fr 1.3fr;
+    }
+  }
+  .marca {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--papel);
+    font: 700 26px/1 var(--f-titulo);
+    letter-spacing: -0.03em;
+  }
+  .pie-marca p {
+    margin-top: 14px;
+    max-width: 32ch;
+    color: #a9a69e;
+  }
+  nav {
+    display: grid;
+    align-content: start;
+    gap: 10px;
+  }
+  h2 {
+    font: 500 12.5px/1 var(--f-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8c8980;
+    margin-bottom: 6px;
+  }
+  nav a,
+  .pie-legal a {
+    text-decoration: none;
+    color: #e4e1d9;
+  }
+  nav a:hover,
+  .pie-legal a:hover {
+    color: var(--chispa);
+  }
+  .pie-legal {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid rgb(255 255 255 / 0.12);
+    display: grid;
+    gap: 8px;
+    font-size: 14px;
+    color: #8c8980;
+  }
+</style>

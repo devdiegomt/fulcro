@@ -1,0 +1,14 @@
+---
+/** La marca de Fulcro: la misma forma de siempre, con los colores nuevos. */
+interface Props {
+  tam?: number;
+  claro?: boolean;
+}
+const { tam = 28, claro = false } = Astro.props;
+const brazo = claro ? '#f3f1ec' : '#141412';
+---
+<svg width={tam} height={tam} viewBox="0 0 100 100" aria-hidden="true">
+  <polygon points="4,4 46,4 50,88" fill={brazo} />
+  <polygon points="54,4 96,4 50,88" fill="#ff5a36" />
+  <rect x="36" y="92" width="28" height="5" rx="2.5" fill={brazo} />
+</svg>

@@ -1,0 +1,150 @@
+---
+import Logo from './Logo.astro';
+import { waLink } from '../config';
+
+const ruta = Astro.url.pathname.replace(/\/$/, '') || '/';
+const enlaces = [
+  { href: '/qlarity', texto: 'Qlarity' },
+  { href: '/margen', texto: 'Margen' },
+  { href: '/acidito', texto: 'Acidito' },
+  { href: '/servicios', texto: 'A la medida' },
+  { href: '/aprende', texto: 'Aprende' },
+];
+---
+<header class="nav">
+  <div class="caja nav-fila">
+    <a href="/" class="marca" aria-label="Fulcro, inicio">
+      <Logo tam={26} />
+      <span>Fulcro</span>
+    </a>
+    <nav aria-label="Principal" class="nav-enlaces">
+      {enlaces.map((e) => (
+        <a href={e.href} aria-current={ruta === e.href ? 'page' : undefined}>{e.texto}</a>
+      ))}
+    </nav>
+    <a class="boton boton-tinta nav-cta" href={waLink('Hola, vengo de la página de Fulcro')} target="_blank" rel="noopener">
+      Escríbeme
+    </a>
+    <details class="nav-movil">
+      <summary aria-label="Abrir menú">
+        <span></span><span></span>
+      </summary>
+      <div class="nav-panel">
+        {enlaces.map((e) => (
+          <a href={e.href} aria-current={ruta === e.href ? 'page' : undefined}>{e.texto}</a>
+        ))}
+        <a href="/contacto">Contacto</a>
+        <a class="boton boton-tinta" href={waLink('Hola, vengo de la página de Fulcro')} target="_blank" rel="noopener">
+          Escríbeme por WhatsApp
+        </a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgb(243 241 236 / 0.86);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--linea);
+  }
+  .nav-fila {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    height: 68px;
+  }
+  .marca {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font: 700 22px/1 var(--f-titulo);
+    letter-spacing: -0.03em;
+    margin-right: auto;
+  }
+  .nav-enlaces {
+    display: none;
+    gap: 26px;
+  }
+  .nav-enlaces a {
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--tinta-2);
+    padding: 6px 0;
+    border-bottom: 2px solid transparent;
+  }
+  .nav-enlaces a:hover,
+  .nav-enlaces a[aria-current='page'] {
+    color: var(--tinta);
+    border-color: var(--acento);
+  }
+  .nav-cta {
+    display: none;
+    min-height: 42px;
+    padding: 9px 18px;
+    font-size: 15px;
+  }
+  .nav-movil summary {
+    list-style: none;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-content: center;
+    gap: 6px;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  .nav-movil summary::-webkit-details-marker {
+    display: none;
+  }
+  .nav-movil summary span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--tinta);
+    transition: transform 0.2s;
+  }
+  .nav-movil[open] summary span:first-child {
+    transform: translateY(4px) rotate(45deg);
+  }
+  .nav-movil[open] summary span:last-child {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+  .nav-panel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 68px;
+    background: var(--papel);
+    border-bottom: 1px solid var(--linea);
+    padding: 12px var(--gutter) 24px;
+    display: grid;
+    gap: 4px;
+  }
+  .nav-panel a:not(.boton) {
+    text-decoration: none;
+    font: 600 24px/1 var(--f-titulo);
+    padding: 12px 0;
+    border-bottom: 1px solid var(--linea);
+  }
+  .nav-panel a[aria-current='page'] {
+    color: var(--acento);
+  }
+  .nav-panel .boton {
+    margin-top: 16px;
+  }
+  @media (min-width: 900px) {
+    .nav-enlaces,
+    .nav-cta {
+      display: flex;
+    }
+    .nav-movil {
+      display: none;
+    }
+  }
+</style>
