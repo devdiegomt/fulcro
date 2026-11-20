@@ -16,14 +16,14 @@ export const sitio = {
 
 /** Quien responde legalmente: la persona natural del RUT. */
 export const titular = {
-  nombre: 'COMPLETAR: nombre completo como aparece en el RUT',
-  documento: 'COMPLETAR: NIT o cédula del RUT',
+  nombre: 'Diego Alejandro Mayorga Torres',
+  documento: '1007718065-8',
   tipo: 'persona natural',
   ciudad: 'Zipaquirá, Cundinamarca, Colombia',
 };
 
 export const contacto = {
-  whatsapp: '573223772019', // formato internacional, sin + ni espacios
+  whatsapp: '573000180855', // formato internacional, sin + ni espacios
   email: 'fulcro.dev@gmail.com',
   instagram: 'fulcrotech',
 };
@@ -31,7 +31,7 @@ export const contacto = {
 export const qlarity = {
   // URL del panel (la de Vercel). Vacía: los botones de «Probar» llevan a
   // WhatsApp en lugar de al registro.
-  app: '',
+  app: 'https://qlarity.vercel.app',
   planes: [
     {
       nombre: 'Estudio',
@@ -73,7 +73,7 @@ export const margen = {
 export const acidito = {
   // Donde se juega. Vacío: los botones de «Jugar» dicen «Pronto» y llevan a
   // Instagram para enterarse cuando salga.
-  jugar: '',
+  jugar: 'https://babyacid.vercel.app',
   niveles: 51,
   temporadas: 2,
 };
@@ -82,7 +82,7 @@ export const aprende = {
   marca: 'ifanidado',
   instagram: 'ifanidado',
   // La página de Vercel con las lecturas paso a paso. Vacía: no se muestra.
-  lecturas: '',
+  lecturas: 'https://ifanidado.vercel.app',
   // El canal, cuando exista. Vacío: aparece como «pronto».
   youtube: '',
 };
