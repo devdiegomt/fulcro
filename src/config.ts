@@ -23,7 +23,7 @@ export const titular = {
 };
 
 export const contacto = {
-  whatsapp: '573223772019', // formato internacional, sin + ni espacios
+  whatsapp: '573000180855', // formato internacional, sin + ni espacios
   email: 'fulcro.dev@gmail.com',
   instagram: 'fulcrotech',
 };
